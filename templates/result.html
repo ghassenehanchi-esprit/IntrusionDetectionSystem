@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/result-style.css' %}">
+
+  <title>IDS PROJECT</title>
+ 
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a class="navbar-brand" href="#">
+        <span style="color:#ff4d29;">I</span>ntrusion 
+        <span style="color:#ff4d29;">D</span>etection 
+        <span style="color:#ff4d29;">S</span>ystem
+        <span class="dot">.</span>
+      </a>
+    </nav>
+  </header>
+  <div class="result-container">
+    <h1>Test du Model NSL_KDD</h1>
+    {% if 'Normal' in answer %}
+  <div class="result-message safe-message">Predicted to be safe by the Intrusion Detection System</div>
+{% else %}
+  <div class="result-message attack-message">
+    {% if answer|length > 0 %}
+      Detected Attacks: {{ answer|safe }}
+    {% else %}
+      No attacks detected
+    {% endif %}
+  </div>
+{% endif %}
+
+
+    
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Load the static tag for handling static files -->
+  {% load static %}
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+
+
+  <title>IDS PROJECT</title>
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <a class="navbar-brand" href="/"><span style="color:#ff4d29 ;"
+                >I</span>ntrusion <span style="color:#ff4d29 ;">D</span>etection <span style="color:#ff4d29 ;">S</span>ystem<span class="dot">.</span></a>
+            
+              </nav>
+              <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-brand ms-lg-3">
+                Upload
+              </button>
+      </header>
+ <div class="login">
+    <h1>Test du Model NSL_KDD</h1>
+
+<form action="{% url 'result' %}" method="POST" >
+  {% csrf_token %}
+  <div class="form-group">
+    <select class="input" name="protocol_type">
+        <option value=" " disabled selected>protocol_type</option>
+        <option value="0">ftp_data</option>
+        <option value="1">other</option>
+        <option value="2">private</option>
+    </select>
+</div>
+<div class="form-group">
+    <select class="input" name="flag">
+        <option value=" " disabled selected>flag</option>
+        <option value="9">telnet</option>
+        <option value="5">name</option>
+        <option value="1">other</option>
+        <option value="4">remote_job</option>
+        <option value="10">finger</option>
+        <option value="2">private</option>
+        <option value="6">netbios_ns</option>
+        <option value="3">http</option>
+        <option value="8">mtp</option>
+        <option value="7">eco_i</option>
+        <option value="0">ftp_data</option>
+    </select>
+</div>
+<div class="form-group">
+  <select class="input" name="service" id="service">
+      <option value="" disabled selected>service</option>
+      <option value="0">ftp_data</option>
+      <option value="1">other</option>
+      <option value="2">private</option>
+      <option value="3">http</option>
+      <option value="4">remote_job</option>
+      <option value="5">name</option>
+      <option value="6">netbios_ns</option>
+      <option value="7">eco_i</option>
+      <option value="8">mtp</option>
+      <option value="9">telnet</option>
+      <option value="10">finger</option>
+      <option value="11">domain_u</option>
+      <option value="12">supdup</option>
+      <option value="13">uucp_path</option>
+      <option value="14">Z39_50</option>
+      <option value="15">smtp</option>
+      <option value="16">csnet_ns</option>
+      <option value="17">uucp</option>
+      <option value="18">netbios_dgm</option>
+      <option value="19">urp_i</option>
+      <option value="20">auth</option>
+      <option value="21">domain</option>
+      <option value="22">ftp</option>
+      <option value="23">bgp</option>
+      <option value="24">ldap</option>
+      <option value="25">ecr_i</option>
+      <option value="26">gopher</option>
+      <option value="27">vmnet</option>
+      <option value="28">systat</option>
+      <option value="29">http_443</option>
+      <option value="30">efs</option>
+      <option value="31">whois</option>
+      <option value="32">imap4</option>
+      <option value="33">iso_tsap</option>
+      <option value="34">echo</option>
+      <option value="35">klogin</option>
+      <option value="36">link</option>
+      <option value="37">sunrpc</option>
+      <option value="38">login</option>
+      <option value="39">kshell</option>
+      <option value="40">sql_net</option>
+      <option value="41">time</option>
+      <option value="42">hostnames</option>
+      <option value="43">exec</option>
+      <option value="44">ntp_u</option>
+      <option value="45">discard</option>
+      <option value="46">nntp</option>
+      <option value="47">courier</option>
+      <option value="48">ctf</option>
+      <option value="49">ssh</option>
+      <option value="50">daytime</option>
+      <option value="51">shell</option>
+      <option value="52">netstat</option>
+      <option value="53">pop_3</option>
+      <option value="54">nnsp</option>
+      <option value="55">IRC</option>
+      <option value="56">pop_2</option>
+      <option value="57">printer</option>
+      <option value="58">tim_i</option>
+      <option value="59">pm_dump</option>
+      <option value="60">red_i</option>
+      <option value="61">netbios_ssn</option>
+      <option value="62">rje</option>
+      <option value="63">X11</option>
+      <option value="64">urh_i</option>
+      <option value="65">http_8001</option>
+      <option value="66">aol</option>
+      <option value="67">http_2784</option>
+      <option value="68">tftp_u</option>
+      <option value="69">harvest</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <input type="text" id="duration" name="duration" placeholder="duration" class="input">
+</div>
+
+<div class="form-group">
+  <input type="text" id="src_bytes" name="src_bytes" placeholder="src_bytes" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="dst_bytes" name="dst_bytes" placeholder="dst_bytes" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="land" name="land" placeholder="land" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="wrong_fragment" name="wrong_fragment" placeholder="wrong_fragment" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="urgent" name="urgent" placeholder="urgent" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="hot" name="hot" placeholder="hot" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="num_failed_logins" name="num_failed_logins" placeholder="num_failed_logins" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="logged_in" name="logged_in" placeholder="logged_in" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="root_shell" name="root_shell" placeholder="root_shell" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="su_attempted" name="su_attempted" placeholder="su_attempted" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="num_root" name="num_root" placeholder="num_root" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="num_file_creations" name="num_file_creations" placeholder="num_file_creations" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="num_shells" name="num_shells" placeholder="num_shells" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="num_access_files" name="num_access_files" placeholder="num_access_files" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="num_outbound_cmds" name="num_outbound_cmds" placeholder="num_outbound_cmds" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="is_host_login" name="is_host_login" placeholder="is_host_login" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="is_guest_login" name="is_guest_login" placeholder="is_guest_login" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="count" name="count" placeholder="count" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="srv_count" name="srv_count" placeholder="srv_count" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="serror_rate" name="serror_rate" placeholder="serror_rate" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="rerror_rate" name="rerror_rate" placeholder="rerror_rate" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="same_srv_rate" name="same_srv_rate" placeholder="same_srv_rate" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="diff_srv_rate" name="diff_srv_rate" placeholder="diff_srv_rate" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="srv_diff_host_rate" name="srv_diff_host_rate" placeholder="srv_diff_host_rate" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="dst_host_count" name="dst_host_count" placeholder="dst_host_count" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="dst_host_srv_count" name="dst_host_srv_count" placeholder="dst_host_srv_count" class="input">
+</div>
+<div class="form-group">
+  <input type="text" id="dst_host_diff_srv_rate" name="dst_host_diff_srv_rate" placeholder="dst_host_diff_srv_rate" class="input">
+</div>
+
+      
+
+
+      <br>
+      <input type="submit" value="Prédire" id="submit-button" name="" >
+      
+    </form>
+    
+    
+        <br>
+        <br>
+        
+        
+        
+        
+     
+      </div>
+      
+
+
+
+       <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+              <div class="modal-body p-0">
+                  <div class="container-fluid">
+                    
+                          
+                          <div class="col-lg-8 ">
+                            
+                            
+                            
+                        </div>
+                      
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+ <script> var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+   myInput.focus()
+})
+</script>
+     
+     </body>
+     </html>
